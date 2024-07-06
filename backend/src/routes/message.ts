@@ -30,8 +30,4 @@ messageRouter.post('/message/new', async (req, res) => {
   }
 });
 
-function createSampleMessage() {
-  return new MessageModel({ author: 'Yuxuan', content: 'Learning Backend...' + `${Date.now()}` });
-}
-
 export default messageRouter;

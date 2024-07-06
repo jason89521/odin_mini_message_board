@@ -54,9 +54,6 @@ export class Server {
 
     // routes
     this.app.use(messageRouter);
-    this.app.get('/', (req, res) => {
-      res.send('Hello World!');
-    });
   }
 }
 
