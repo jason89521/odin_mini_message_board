@@ -3,10 +3,10 @@ import { nextTick, ref, watch } from 'vue';
 import MessageItem from './MessageItem.vue';
 import { ListMessageResponse } from '../type';
 import { messageStore } from '../store';
+import { REQUEST_URL } from '../constant';
 
 defineProps<{ name: string }>();
 
-const URL_PREFIX = 'http://localhost:5566/message';
 const container = ref<HTMLUListElement | null>(null);
 const observerTarget = ref<HTMLLIElement | null>(null);
 const next = ref<string | null>(null);
@@ -19,7 +19,7 @@ function loadMore() {
     return;
   }
   isLoading.value = true;
-  const url = `${URL_PREFIX}/list${next.value ? `?before=${next.value}` : ''}`;
+  const url = `${REQUEST_URL}/message/list${next.value ? `?before=${next.value}` : ''}`;
   fetch(url)
     .then(res => res.json())
     .then(async (data: ListMessageResponse) => {

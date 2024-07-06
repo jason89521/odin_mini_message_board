@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import { Message } from '../type';
 import { messageStore } from '../store';
+import { REQUEST_URL } from '../constant';
 
 const { author } = defineProps<{ author: string }>();
 
@@ -16,7 +17,7 @@ function handleSubmit() {
     return;
   }
   isSubmitting.value = true;
-  fetch('http://localhost:5566/message/new', {
+  fetch(`${REQUEST_URL}/message/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
